@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Index</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      h2 {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      #start-camera, #stop-camera {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      #start-camera:hover,
+      #stop-camera:hover {
+        background-color: #7d7e7d;
+      }
+
+      #start-camera:active,
+      #stop-camera:active {
+        background-color: #c21b02;
+      }
+
+      #logout-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 8px 16px;
+        font-size: 14px;
+        background-color: #ff0000;
+        color: black;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      
+      #logout-button:hover {
+        background-color: #827b7b;
+      }
+
+      #logout-button:active {
+        background-color: #14a8c2;
+      }
+
+      #video {
+        display: none;
+        margin-bottom: 10px;
+      }
+
+      #video-container {
+        text-align: center;
+      }
+
+      .center {
+        margin: auto;
+        width: 60%;
+        padding: 10px;
+      }
+
+      #loading-message {
+        display: none;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 16px;
+        color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Real-time Hand Tracking and Gesture Recognition</h1>
+    <h2>Welcome, {{ user.username }}!</h2>
+    <button id="start-camera">Start Camera</button>
+    <button id="stop-camera">Stop Camera</button>
+    <a href="{% url 'logout' %}" id="logout-button">Logout</a>
+    <div id="video-container" class="center">
+      <img id="video" src="" alt="Video Stream">
+    </div>
+    <div id="loading-message">Camera initialization, please wait...</div>
+
+
+    <script>
+      // JavaScript code to handle the Start Camera button click event
+      const startCameraButton = document.getElementById('start-camera');
+      const loadingMessage = document.getElementById('loading-message');
+      startCameraButton.addEventListener('click', () => {
+        const videoElement = document.getElementById('video');
+        videoElement.src = "{% url 'video_feed' %}";
+        videoElement.style.display = 'block';
+        loadingMessage.textContent = 'Camera initialization, please wait...';
+        loadingMessage.style.display = 'block';
+        setTimeout(() => {
+        loadingMessage.style.display = 'none';
+         }, 9000);
+      });
+
+      // JavaScript code to handle the Stop Camera button click event
+      const stopCameraButton = document.getElementById('stop-camera');
+      stopCameraButton.addEventListener('click', () => {
+        const videoElement = document.getElementById('video');
+        videoElement.src = "";
+        videoElement.style.display = 'none';
+      });
+    </script>
+  </body>
+</html>

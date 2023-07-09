@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Signup</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+      }
+      
+      form {
+        width: 300px;
+        margin: 20px auto;
+      }
+      
+      div {
+        margin-bottom: 10px;
+      }
+      
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+      }
+      
+      .errorlist {
+        color: red;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        list-style: none;
+        padding: 0;
+      }
+      
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Create an Account</h1>
+    <form action="{% url 'signup' %}" method="post">
+      {% csrf_token %}
+      {% for field in form %}
+        <div>
+          {{ field.label_tag }}
+          {{ field }}
+          {% if field.errors %}
+            <ul class="errorlist">
+              {% for error in field.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      {% endfor %}
+      <input type="submit" name="signup" value="Signup">
+    </form>
+  </body>
+</html>

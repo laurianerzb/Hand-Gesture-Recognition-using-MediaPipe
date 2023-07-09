@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+      }
+      
+      .error {
+        color: red;
+        text-align: center;
+        margin-top: 20px;
+      }
+      
+      form {
+        width: 300px;
+        margin: 20px auto;
+      }
+      
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+      
+      p {
+        text-align: center;
+        margin-top: 20px;
+      }
+      
+      p a {
+        color: #4CAF50;
+      }
+      
+      p a:hover {
+        text-decoration: underline;
+      }
+      
+      .admin-login {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+      
+      .admin-login a {
+        background-color: #f44336;
+        color: white;
+        padding: 5px 10px;
+        text-decoration: none;
+      }
+      
+      .admin-login a:hover {
+        background-color: #d32f2f;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Login</h1>
+    {% if error_message %}
+    <p class="error">{{ error_message }}</p>
+    {% endif %}
+    
+    <div class="admin-login">
+      <a href="/admin/"target="_blank">Admin Login</a>
+    </div>
+    
+    <form action="{% url 'login' %}" method="post">
+      {% csrf_token %}
+      <input type="text" name="username" placeholder="Username" required><br>
+      <input type="password" name="password" placeholder="Password" required><br>
+      <input type="submit" name="login" value="Login">
+    </form>
+    <p>Don't have an account? <a href="{% url 'signup' %}">Signup here</a></p>
+  </body>
+</html>
