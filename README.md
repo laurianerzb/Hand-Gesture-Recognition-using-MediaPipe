@@ -23,6 +23,12 @@ This is simple web-based application that utilizes the MediaPipe library, OpenCV
 
 Once the program is launch, it provide a user interface to login/create an account. After creating account user can login and start the camera.
 
+The system provides also an admin side. for admin login use:
+
+> username: admin
+>
+> password: admin
+
 The sample gestures implemented in the program are:
 
 1. Fist
