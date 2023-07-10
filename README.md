@@ -1,4 +1,4 @@
-# Hand Gesture Recognition System**using MediaPipe and OpenCV in Django**
+# Hand Gesture Recognition System **using MediaPipe and OpenCV in Django**
 
 ## Overview
 
