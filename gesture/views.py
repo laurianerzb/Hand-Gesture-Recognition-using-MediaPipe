@@ -28,7 +28,7 @@ class GestureRecognizer:
         for gesture, condition_func in self.gesture_functions.items():
             if condition_func(landmark_list):
                 return gesture
-        #return "Unknown"
+        return "Unknown"
 
     def is_fist(self, landmark_list):
         thumb_to_index, index_to_middle, middle_to_ring, ring_to_pinky = self.calculate_distances(landmark_list)
