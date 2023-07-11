@@ -15,7 +15,7 @@ This is simple web-based application that utilizes the MediaPipe library, OpenCV
 ## Usage
 
 * Clone this repository
-* Open terminal where the folder project is located
+* Open terminal where the manage.py file is located
 * Run `python manage.py runserver`
 * After the server starts follow the link or paste it in the web browser to start the program
 
